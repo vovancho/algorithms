@@ -7,8 +7,6 @@ class Solution
 {
     /**
      * @param int[] $nums
-     *
-     * @return int
      */
     public function findMaxLength(array $nums): int
     {

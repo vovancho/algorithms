@@ -1,14 +1,23 @@
 <?php
-
+/**
+ * $nums - целочисленный массив, отсортированный по возрастанию.
+ * Задача состоит в том, чтобы найти два числа, которые в сумме дают определенное целевое число.
+ * Индексы этих чисел — это то, что нам нужно вернуть.
+ */
 class Solution
 {
-    public function twoSum(array $numbers, int $target): ?array
+    /**
+     * @param int[] $nums
+     *
+     * @return int[]|null
+     */
+    public function twoSum(array $nums, int $target): ?array
     {
         $l = 0;
-        $r = count($numbers) - 1;
+        $r = count($nums) - 1;
 
         while ($l < $r) {
-            $num = $numbers[$l] + $numbers[$r];
+            $num = $nums[$l] + $nums[$r];
 
             if ($num === $target) {
                 return [$l + 1, $r + 1];

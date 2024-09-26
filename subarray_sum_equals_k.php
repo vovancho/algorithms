@@ -20,11 +20,6 @@ class Solution
         $this->prefix = $prefix;
     }
 
-    /**
-     * @param int $k
-     *
-     * @return int
-     */
     public function subarraySum(int $k): int
     {
         $map = [0 => 1];

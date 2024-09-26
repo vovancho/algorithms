@@ -62,16 +62,13 @@ var_dump(
 
 ```php
 /**
- * $nums состоит только из двоичных цифр (0 и 1).
- * Задача состоит в том, чтобы найти непрерывный подмассив, в котором количество 0 и 1 одинаково, и этот подмассив должен быть самым длинным из всех таких подмассивов в данном массиве.
- * Длина этого подмассива — это то, что нам нужно вернуть.
+ * $nums - целочисленный массив.
+ * Задача состоит в том, чтобы вычислить сумму элементов $nums между индексами $left и $right включительно.
  */
 class Solution
 {
     /**
      * @param int[] $nums
-     *
-     * @return int
      */
     public function findMaxLength(array $nums): int
     {
@@ -125,11 +122,6 @@ class Solution
         $this->prefix = $prefix;
     }
 
-    /**
-     * @param int $k
-     *
-     * @return int
-     */
     public function subarraySum(int $k): int
     {
         $map = [0 => 1];
@@ -179,24 +171,174 @@ Output: [1, 3] // 2 + 4 = 6
 [Метод двух указателей для отсортированного массива](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/)
 
 ```php
-class Solution {
-
-
-    function twoSum($numbers, $target) {
+/**
+ * $nums - целочисленный массив, отсортированный по возрастанию.
+ * Задача состоит в том, чтобы найти два числа, которые в сумме дают определенное целевое число.
+ * Индексы этих чисел — это то, что нам нужно вернуть.
+ */
+class Solution
+{
+    /**
+     * @param int[] $nums
+     *
+     * @return int[]|null
+     */
+    public function twoSum(array $nums, int $target): ?array
+    {
         $l = 0;
-        $r = count($numbers) - 1;
-        while($l < $r)
-        {
-            $num = $numbers[$l] + $numbers[$r];
-            if($num === $target) return [$l+1,$r+1];
-            elseif($num > $target) $r--;
-            else $l++;
+        $r = count($nums) - 1;
+
+        while ($l < $r) {
+            $num = $nums[$l] + $nums[$r];
+
+            if ($num === $target) {
+                return [$l + 1, $r + 1];
+            }
+
+            $num > $target ? $r-- : $l++;
         }
 
+        return null;
     }
 }
+
+var_dump(
+    (new Solution())->twoSum([2, 3, 4], 6)
+);
+
+// output: array(2) {
+//   [0] => int(1)
+//   [1] => int(3)
+// }
 ```
 
+### 3Sum
+[Задача о трех суммах](https://leetcode.com/problems/3sum/description/)
+
+```php
+/**
+ * $nums - целочисленный массив.
+ * Задача состоит в том, чтобы вернуть все триплеты [$nums[i], $nums[j], $nums[k]] такие,
+ *   что i !== j, i !== k и j !== k, и $nums[i] + $nums[j] + $nums[k] === 0.
+ */
+class Solution
+{
+    /**
+     * @param int[] $nums
+     *
+     * @return int[][]
+     */
+    public function threeSum(array $nums): array
+    {
+        $result = [];
+        $n = count($nums);
+        sort($nums);
+
+        for ($i = 0; $i < $n - 2; $i++) {
+            // пропускаем дубликаты и первый элемент
+            if ($i > 0 && $nums[$i] === $nums[$i - 1]) {
+                continue;
+            }
+
+            $left = $i + 1;
+            $right = $n - 1;
+            $target = 0 - $nums[$i];
+
+            while ($left < $right) {
+                $sum = $nums[$left] + $nums[$right];
+                if ($sum === $target) {
+                    $result[] = [$nums[$i], $nums[$left], $nums[$right]];
+
+                    // пропускаем дубликаты для 2-го и 3-го элементов
+                    while ($left < $right && $nums[$left] === $nums[$left + 1]) {
+                        $left++;
+                    }
+                    while ($left < $right && $nums[$right] === $nums[$right - 1]) {
+                        $right--;
+                    }
+
+                    $left++;
+                    $right--;
+                } else {
+                    $sum < $target ? $left++ : $right--;
+                }
+            }
+        }
+
+        return $result;
+    }
+}
+
+var_dump(
+    (new Solution())->threeSum([-1, 0, 1, 2, -1, -4])
+);
+
+// output: array(2) {
+//  [0] =>
+//    array(3) {
+//      [0] => int(-1)
+//      [1] => int(-1)
+//      [2] => int(2)
+//    }
+//    [1] =>
+//    array(3) {
+//      [0] => int(-1)
+//      [1] => int(0)
+//      [2] => int(1)
+//    }
+//  }
+```
+
+### Container With Most Water
+[Контейнер с наибольшим количеством воды](https://leetcode.com/problems/container-with-most-water/description/)
+
+![container_with_most_water](project/question_11.jpg)
+
+```php
+/**
+ * $height - целочисленный массив.
+ * Задача состоит в том, чтобы найти две линии, которые вместе с осью x образуют контейнер, так что контейнер содержит больше всего воды.
+ * Максимальное количество воды, которое может хранить контейнер — это то, что нам нужно вернуть.
+ */
+class Solution
+{
+    /**
+     * @param int[] $height
+     */
+    public function maxArea(array $height): int
+    {
+        $count = count($height);
+        $r = 0;
+        $i = 0;
+        $j = $count - 1;
+
+        while ($i < $count - 1) {
+            // Если мы начнем с линий на противоположных концах и движемся внутрь,
+            // единственный возможный момент, когда площадь может быть больше, — это когда высота увеличивается,
+            // поскольку ширина будет непрерывно уменьшаться.
+            if ($height[$i] <= $height[$j]) {
+                $t = $height[$i] * ($j - $i); // площадь контейнера
+                $i++;
+            } else {
+                $t = $height[$j] * ($j - $i); // площадь контейнера
+                $j--;
+            }
+
+            if ($t > $r) {
+                $r = $t;
+            }
+        }
+
+        return $r;
+    }
+}
+
+var_dump(
+    (new Solution())->maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7])
+);
+
+// output: int(49)
+```
 
 # Sliding Window
 # Fast & Slow Pointers
