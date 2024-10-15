@@ -341,6 +341,205 @@ var_dump(
 ```
 
 # Sliding Window
+_(Скользящее окно)_
+
+Шаблон скользящего окна используется для поиска подмассива или подстроки, удовлетворяющей определенному условию, оптимизируя временную сложность путем поддержания окна элементов.
+
+Используйте этот шаблон при решении задач, связанных с непрерывными подмассивами или подстроками.
+
+## Проблема
+Найти максимальную сумму подмассива размера k.
+
+```
+Input: nums = [2, 1, 5, 1, 3, 2], k = 3
+
+Output: 9 // [.., 5 + 1 + 3, ..]
+```
+
+## Объяснение
+
+1. Начните с суммы первых k элементов.
+2. Сдвиньте окно на один элемент за раз, вычитая элемент, который выходит за пределы окна, и добавляя новый элемент.
+3. Отслеживайте максимальную полученную сумму.
+
+### Maximum Average Subarray I
+[Максимальное среднее значение подмассива](https://leetcode.com/problems/maximum-average-subarray-i/description/)
+
+```php
+/**
+ * $nums - целочисленный массив.
+ * Задача состоит в том, чтобы найти непрерывный подмассив, длина которого равна $k, имеющий максимальное среднее значение.
+ * Максимальное среднее значение подмассива — это то, что нам нужно вернуть.
+ */
+class Solution
+{
+    /**
+     * @param int[] $nums
+     */
+    public function findMaxAverage(array $nums, int $k): float
+    {
+        $sum = 0;
+        $count = count($nums);
+
+        // Изначально окно начинается с начала массива и перемещается на k - 1 элемент,
+        // вычисляя среднее значение для первых k элементов.
+        for ($i = 0; $i < $k; $i++) {
+            $sum += $nums[$i];
+        }
+        $res = $sum;
+
+        // Второй цикл начинается с элемента k и смещается вправо.
+        // По мере перемещения окна элемент, покидающий окно (самый левый), вычитается из суммы,
+        // а новый элемент, входящий в окно, добавляется к сумме.
+        for ($i = $k; $i < $count; $i++) {
+            $sum += $nums[$i] - $nums[$i - $k];
+            if ($sum > $res) {
+                $res = $sum;
+            }
+        }
+
+        // вычисляем среднее значение
+        return $res / $k;
+    }
+}
+
+var_dump(
+    (new Solution())->findMaxAverage([1, 12, -5, -6, 50, 3], 4)
+);
+
+// output: double(12.75)
+// (12 - 5 - 6 + 50) / 4 = 12.75
+```
+
+### Longest Substring Without Repeating Characters
+[Длина самой длинной подстроки без повторяющихся символов](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
+
+```php
+/**
+ * $s - строка.
+ * Задача состоит в том, чтобы найти длину самой длинной подстроки без повторяющихся символов.
+ * Длина самой длинной подстроки без повторяющихся символов — это то, что нам нужно вернуть.
+ */
+class Solution
+{
+    public function lengthOfLongestSubstring(string $s): int
+    {
+        if (strlen($s) === 0) {
+            return 0;
+        }
+        if (strlen($s) === 1) {
+            return 1;
+        }
+
+        $chars = str_split($s);
+
+        $i = 0; // правый указатель
+        $j = 0; // левый указатель
+        $max = 0;
+        $seen = []; // хэш-набор
+
+        while ($i < count($chars)) {
+            $c = $chars[$i];
+
+            // Если символ уже присутствует в наборе, это означает, что вам нужно переместить скользящее окно на 1,
+            // перед этим вам нужно удалить все символы, которые находятся перед символом,
+            // который уже присутствовал в окне ранее.
+            while (isset($seen[$c])) {
+                unset($seen[$chars[$j]]);
+                $j++;
+            }
+
+            $seen[$chars[$i]] = true;
+
+            $max = max($i - $j + 1, $max);
+            $i++;
+        }
+
+        return $max;
+    }
+}
+
+var_dump(
+    (new Solution())->lengthOfLongestSubstring('abcabcbb')
+);
+
+// output: int(3)
+```
+
+### Minimum Window Substring
+[Минимальная подстрока окна](https://leetcode.com/problems/minimum-window-substring/description/)
+
+```php
+/**
+ * $s - строка, $t - строка.
+ * Задача состоит в том, чтобы найти минимальную подстроку в строке $s, в которой содержится каждый символ из строки $t.
+ * Минимальная подстрока — это то, что нам нужно вернуть.
+ */
+class Solution
+{
+    public function minWindow(string $s, string $t): string
+    {
+        $hashMap = []; // хэш-набор
+        $checker = [];
+        foreach (str_split($t) as $val) {
+            $hashMap[$val] = isset($hashMap[$val]) ? $hashMap[$val] + 1 : 1;
+            $checker[$val] = 0;
+        }
+
+        $resultMin = strlen($s);
+        $idxPairs = [];
+        $have = 0;
+        $left = $right = 0;
+
+        while ($right < strlen($s)) {
+            $letter = $s[$right];
+            if (isset($hashMap[$letter])) {
+                $checker[$letter] += 1;
+                if ($checker[$letter] <= $hashMap[$letter]) {
+                    $have++;
+                }
+            }
+            while ($have === strlen($t)) {
+                $len = $right - $left + 1;
+                if ($len <= $resultMin) {
+                    $resultMin = $len;
+                    $idxPairs['left'] = $left;
+                    $idxPairs['right'] = $right;
+                }
+
+                if (isset($hashMap[$s[$left]]) && $checker[$s[$left]] > 0) {
+                    if ($checker[$s[$left]] <= $hashMap[$s[$left]]) {
+                        $have--;
+                    }
+                    $checker[$s[$left]] -= 1;
+                }
+                $left++;
+            }
+            $right++;
+        }
+
+        if (empty($idxPairs)) {
+            return '';
+        }
+
+        $result = '';
+        while ($idxPairs['left'] <= $idxPairs['right']) {
+            $result .= $s[$idxPairs['left']];
+            $idxPairs['left']++;
+        }
+        return $result;
+    }
+}
+
+var_dump(
+    (new Solution())->minWindow('ADOBECODEBANC', 'ABC')
+);
+
+// output: string(4) "BANC"
+// ADOBECODE[BANC]
+//           BA C => (ABC)
+```
+
 # Fast & Slow Pointers
 # LinkedList In-place Reversal
 # Monotonic Stack
