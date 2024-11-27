@@ -541,6 +541,134 @@ var_dump(
 ```
 
 # Fast & Slow Pointers
+_(Быстрые и медленные указатели)_
+
+Шаблон «Быстрые и медленные указатели (Черепаха и Заяц)» используется для обнаружения циклов в связанных списках и других подобных структурах.
+
+## Проблема
+
+Определить, есть ли цикл в связанном списке.
+
+## Объяснение
+
+1. Инициализируйте два указателя, один из которых перемещается на один шаг за раз (медленно), а другой перемещается на два шага за раз (быстро).
+2. Если есть цикл, быстрый указатель в конечном итоге встретится с медленным указателем.
+3. Если быстрый указатель достигает конца списка, цикла нет.
+
+### Linked List Cycle
+[Цикл связанного списка](https://leetcode.com/problems/linked-list-cycle/description/)
+
+```php
+/**
+ * ListNode - Класс связанного списка
+ */
+class ListNode
+{
+    public ?ListNode $next = null;
+    
+    public function __construct(public int $val = 0)
+    {
+    }
+}
+
+/**
+ * $head - связанный список.
+ * Задача состоит в том, чтобы найти цикл в связанном списке.
+ * Наличие цикла — это то, что нам нужно вернуть.
+ */
+class Solution
+{
+    public function hasCycle(ListNode $head): bool
+    {
+        $slowPointer = $fastPointer = $head;
+        while ($fastPointer !== null && $fastPointer->next !== null) {
+            $slowPointer = $slowPointer->next; // медленный указатель перемещается на один шаг
+            $fastPointer = $fastPointer->next->next; // быстрый указатель перемещается на два шага
+
+            // если есть цикл, быстрый указатель в конечном итоге встретится с медленным указателем
+            if ($slowPointer === $fastPointer) {
+                return true;
+            }
+        }
+
+        // если быстрый указатель достигает конца списка, цикла нет
+        return false;
+    }
+}
+
+$listNode0 = new ListNode(3);
+$listNode1 = new ListNode(2);
+$listNode2 = new ListNode(0);
+$listNode3 = new ListNode(-4);
+
+$listNode0->next = $listNode1;
+$listNode1->next = $listNode2;
+$listNode2->next = $listNode3;
+$listNode3->next = $listNode2;
+
+// $listNode0 - связанный список [3 -> 2 -> 0 -> -4]
+//                               [     ^_________/ ]
+
+var_dump(
+    (new Solution())->hasCycle($listNode0)
+);
+
+// output: bool(true)
+```
+
+### Happy Number
+[Счастливое число](https://leetcode.com/problems/happy-number/description/)
+
+```php
+/**
+ * $n - целочисленное число.
+ * Задача состоит в том, чтобы определить, является ли число $n - счастливым.
+ * Является ли число $n счастливым — это то, что нам нужно вернуть.
+ *
+ * Счастливое число - число, у которого сумма квадратов его цифр возвращает 1. (в цикле для каждого результата)
+ */
+class Solution
+{
+    public function isHappy(int $n): bool
+    {
+        $slow = $fast = $n;
+        do {
+            $slow = $this->powerSum($slow); // медленный указатель перемещается на один шаг
+            $fast = $this->powerSum($this->powerSum($fast)); // быстрый указатель перемещается на два шага
+        } while ($fast !== 1 && $fast !== $slow); // если есть цикл, быстрый указатель в конечном итоге встретится с медленным указателем
+
+        // если быстрый указатель равен 1, число счастливое
+        // если указатели равны, то число несчастливое
+        return $fast === 1;
+    }
+
+    /**
+     * Вычисляем сумму квадратов цифр числа
+     */
+    private function powerSum(int $s): int
+    {
+        $digits = str_split($s);
+        $res = 0;
+
+        foreach ($digits as $digit){
+            $res += $digit ** 2;
+        }
+
+        return $res;
+    }
+}
+
+var_dump(
+    (new Solution())->isHappy(19)
+);
+
+// output: bool(true)
+// 1 ** 2 + 9 ** 2 = 1 + 81 = 82 (slow 1 шаг) | 1 ** 2 + 9 ** 2 = 1 + 81 = 82   => 8 ** 2 + 2 ** 2 = 64 + 4 = 68            (fast 2 шага)
+// ^        ^                 --                ^        ^                 --      ^        ^                 --
+// 8 ** 2 + 2 ** 2 = 64 + 4 = 68 (slow 1 шаг) | 6 ** 2 + 8 ** 2 = 36 + 64 = 100 => 1 ** 2 + 0 ** 2 + 0 ** 2 = 1 + 0 + 0 = 1 (fast 2 шага)
+// ^        ^                 --                ^        ^                  ---    ^        ^        ^                    -
+```
+
 # LinkedList In-place Reversal
 # Monotonic Stack
 # Top ‘K’ Elements
