@@ -32,7 +32,7 @@ class Solution
 {
     public function reverseList(ListNode $head): ListNode
     {
-        if($head->next === null) {
+        if ($head->next === null) {
             return $head;
         }
 
