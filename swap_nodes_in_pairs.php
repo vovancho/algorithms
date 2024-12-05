@@ -32,29 +32,30 @@ class Solution
 {
     public function swapPairs(ListNode $head): ListNode
     {
-        if ($head->next === null) {
-            return $head;
+        // создаем фиктивный узел $dummy и соединяем его с головой списка $head. (это позволит обработать пограничные случаи при замене первой пары)
+        $dummy = new ListNode(0);
+        $dummy->next = $head;
+        // инициализируем указатель $cur на фиктивный узел $dummy для обхода связанного списка
+        $cur = $dummy;
+
+        // используем цикл while для итерации по списку, пока не останется хотя бы два узла для замены
+        while ($cur->next !== null && $cur->next->next !== null) {
+            // определяем первый ($first) и второй ($second) узлы в паре, которые нужно поменять местами
+            $first = $cur->next;
+            $second = $cur->next->next;
+
+            // меняем местами узлы, изменив указатели next
+            $first->next = $second->next;
+            $second->next = $first;
+            // обновляем $cur->next, чтобы он указывал на второй ($second) узел в паре
+            $cur->next = $second;
+
+            // перемещаем указатель $cur на следующую пару, установив его на исходный первый ($first) узел
+            $cur = $first;
         }
 
-        $home = $head->next;
-        $end = $head;
-
-        while ($head && $head->next) {
-            // Действия по переворачиванию пар узлов
-            $aux = $head->next;
-            $end->next = $aux;
-            $head->next = $aux->next;
-            $aux->next = $head;
-
-            var_dump($home->output());
-
-            // Действия по обновлению указателей
-            $end = $head;
-            $head = $head->next;
-        }
-
-        // мы возвращаем указатель дома
-        return $home;
+        // возвращаем $dummy->next в качестве нового заголовка измененного связанного списка
+        return $dummy->next;
     }
 }
 
