@@ -1309,6 +1309,73 @@ var_dump(
 // k: 3 => 1 раз
 ```
 
+### Find K Pairs with Smallest Sums
+[Поиск K пар с наименьшими суммами](https://leetcode.com/problems/find-k-pairs-with-smallest-sums/description/)
+
+```php
+/**
+ * $nums1, $nums2 - целочисленные массивы, отсортированные по возрастанию. $k - целое число.
+ * Задача состоит в том, чтобы определить пару (u, v), которая состоит из одного элемента из массива $nums1 и одного элемента из массива $nums2, с наименьшими суммами.
+ * Массив с наименьшими суммами элементов размером $k из массивов $nums1 и $nums2 — это то, что нам нужно вернуть.
+ */
+class Solution
+{
+    public function kSmallestPairs(array $nums1, array $nums2, int $k): array
+    {
+        // инициализируем массив результатов и кучу
+        $result = [];
+        $heap = new SplMinHeap();
+
+        // помещаем в кучу суммы каждого элемента в $nums1 с первым элементом в $nums2.
+        foreach ($nums1 as $num) {
+            // куча содержит кортеж [сумма элементов $nums1 и $nums2, индекс элемента $nums2]
+            $heap->insert([$num + $nums2[0], 0]);
+        }
+
+        // Pop the smallest pair from the heap and add it to the result list
+        while ($k > 0 && !$heap->isEmpty()) {
+            // итеративно извлекаем наименьшую пару из кучи
+            $pair = $heap->extract();
+            $numsSum = $pair[0];
+            $index = $pair[1];
+
+            // добавляем наименьшую пару в список результатов
+            // значение для элемента $nums1 рассчитываем вычитанием из суммы, т.к. в куче только индекс ($index) массива $nums2
+            $result[] = [($nums1Elem = $numsSum - $nums2[$index]), $nums2[$index]];
+
+            // помещаем сумму текущего элемента в $nums1 со следующим элементом в $nums2 обратно в кучу.
+            if ($index + 1 < count($nums2)) {
+                $heap->insert([($nums1Elem = $numsSum - $nums2[$index]) + $nums2[$index + 1], $index + 1]);
+            }
+
+            // уменьшаем число пар, чтобы вернуть результат
+            $k--;
+        }
+
+        return $result;
+    }
+}
+
+var_dump(
+    (new Solution())->kSmallestPairs([1, 7, 11], [2, 4, 6], 3)
+);
+
+// output: array(3) {
+//   [0] => array(2) {
+//     [0] => int(1)    [1, 7, 11], [2, 4, 6] = 1 + 2 = 3 (наименьшая сумма)
+//     [1] => int(2)     =           =
+//   }
+//   [1] => array(2) {
+//     [0] => int(1)    [1, 7, 11], [2, 4, 6] = 1 + 4 = 5 (наименьшая сумма)
+//     [1] => int(4)     =              =
+//   }
+//   [2] => array(2) {
+//     [0] => int(1)    [1, 7, 11], [2, 4, 6] = 1 + 6 = 7 (наименьшая сумма)
+//     [1] => int(6)     =                 =
+//   }
+// }
+```
+
 # Overlapping Intervals
 # Modified Binary Search
 # Binary Tree Traversal
