@@ -1458,6 +1458,113 @@ var_dump(
 // }
 ```
 
+### Insert Interval
+[Вставка интервала](https://leetcode.com/problems/insert-interval/description/)
+
+```php
+/**
+ * $intervals - отсортированный в порядке возрастания массив не перекрывающихся интервалов, где интервал является массивом с левой и правой границей.
+ * $newInterval - массив интервала с левой и правой границей.
+ * Задача состоит в том, чтобы вставить $newInterval в $intervals так, чтобы $intervals также не имел перекрывающихся интервалов (при необходимости перекрывающиеся интервалы могут быть объединены).
+ * Массив $intervals после вставки $newInterval — это то, что нам нужно вернуть.
+ */
+class Solution
+{
+    public function insert(array $intervals, array $newInterval): array
+    {
+        $result = [];
+
+        // курсор-индекс по интервалам $intervals
+        $i = 0;
+
+        // получаем не перекрывающиеся интервалы $intervals до $newInterval
+        while ($i < count($intervals) && $intervals[$i][1] < $newInterval[0]) {
+            $result[] = $intervals[$i];
+            $i++;
+        }
+
+        // объединяем перекрывающиеся интервалы
+        while ($i < count($intervals) && $intervals[$i][0] <= $newInterval[1]) {
+            $newInterval[0] = min($newInterval[0], $intervals[$i][0]);
+            $newInterval[1] = max($newInterval[1], $intervals[$i][1]);
+            $i++;
+        }
+
+        // получаем объединенный перекрывающийся интервал
+        $result[] = $newInterval;
+
+        // получаем не перекрывающиеся интервалы $intervals после $newInterval
+        while ($i < count($intervals)) {
+            $result[] = $intervals[$i];
+            $i++;
+        }
+
+        return $result;
+    }
+}
+
+var_dump(
+    (new Solution())->insert([[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]], [4, 8])
+);
+
+// output: array(3) {
+//   [0] => array(2) {
+//     [0] => int(1)
+//     [1] => int(2)
+//   }
+//   [1] => array(2) {
+//     [0] => int(3)
+//     [1] => int(10)
+//   }
+//   [2] => array(2) {
+//     [0] => int(12)
+//     [1] => int(16)
+//   }
+// }
+```
+
+### Non-overlapping Intervals
+[Не перекрывающиеся интервалы](https://leetcode.com/problems/non-overlapping-intervals/description/)
+
+```php
+/**
+ * $intervals - массив интервалов, где интервал является массивом с левой и правой границей.
+ * Задача состоит в том, чтобы определить минимальное количество интервалов, которое нужно удалить, чтобы сделать остальные интервалы не перекрывающимися (соприкасающиеся интервалы - не перекрывающимися).
+ * Минимальное количество интервалов, которое нужно удалить — это то, что нам нужно вернуть.
+ */
+class Solution
+{
+    public function eraseOverlapIntervals(array $intervals): int
+    {
+        // сортируем интервалы по их времени окончания.
+        usort($intervals, static fn($a, $b) => $a[1] <=> $b[1]);
+
+        $counter = 0;
+        $prevEnd = $intervals[0][1];
+
+        // начинаем процесс со второго интервала.
+        for ($i = 1; $i < count($intervals); $i++) {
+            // если текущий интервал перекрывается с предыдущим, увеличиваем счетчик.
+            if ($intervals[$i][0] < $prevEnd) {
+                $counter++;
+            } else {
+                // если текущий интервал не перекрывается, обновляем время окончания.
+                $prevEnd = $intervals[$i][1];
+            }
+        }
+
+        return $counter;
+    }
+}
+
+var_dump(
+    (new Solution())->eraseOverlapIntervals([[1, 2], [2, 3], [3, 4], [1, 3]])
+);
+
+// output: int(1)
+// [1, 3] - перекрывается с интервалом [1, 2] и [2, 3]
+```
+
 # Modified Binary Search
 # Binary Tree Traversal
 # Depth-First Search (DFS)
