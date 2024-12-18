@@ -1698,7 +1698,182 @@ var_dump(
 //              ^
 ```
 
+### Search a 2D Matrix
+[Поиск в 2D-матрице](https://leetcode.com/problems/search-a-2d-matrix-ii/description/)
+
+```php
+/**
+ * $matrix - отсортированная матрица целых чисел. $target - искомое значение в матрице.
+ * Задача состоит в том, чтобы найти целевое значение $target в матрице $matrix, используя эффективный метод. (Бинарный поиск)
+ * Содержит ли матрица $matrix искомое значение $target (true/false) — это то, что нам нужно вернуть.
+ */
+class Solution
+{
+    public function searchMatrix(array $matrix, int $target): bool
+    {
+        $lenColumn = count($matrix);
+        $lenRow = count($matrix[0]);
+
+        // идем по рядам матрицы
+        for ($y = 0; $y < $lenColumn; $y++) {
+            $leftX = 0;
+            $rightX = $lenRow - 1;
+
+            // выполняем бинарный поиск
+            while ($leftX <= $rightX) {
+                // определяем индекс середины ряда матрицы
+                $middleX = floor(($leftX + $rightX) / 2);
+                $value = $matrix[$y][$middleX];
+
+                // если нашли, то возвращаем результат
+                if ($value === $target) {
+                    return true;
+                }
+
+                // если текущее значение в матрице меньше целевого значения, то целевое значение находится в правой части ряда
+                if ($value < $target) {
+                    $leftX = $middleX + 1;
+                } else { // в противном случае целевое значение находится в левой части ряда
+                    $rightX = $middleX - 1;
+                }
+            }
+        }
+
+        return false;
+    }
+}
+
+var_dump(
+    (new Solution())->searchMatrix([
+        [ 1,  4,  7, 11, 15],
+        [ 2,  5,  8, 12, 19],
+        [ 3,  6,  9, 16, 22],
+        [10, 13, 14, 17, 24],
+        [18, 21, 23, 26, 30]
+    ], 5)
+);
+
+// output: bool(true)
+// [ 1,  4,  7, 11, 15] y0
+//  -l-     -m-     -r-
+// [ 1,  4]<- r = m - 1
+//  -l- -r-
+//      -m-
+//     [ 4]
+// [ 2,  5,  8, 12, 19] y1
+//  -l-     -m-     -r-
+// [ 2,  5]<- r = m - 1
+//  -l- -r-
+//      -m-
+//     [ 5]
+//       ^
+```
+
 # Binary Tree Traversal
+_(Обход бинарного дерева)_
+
+Обход бинарного дерева подразумевает посещение всех узлов бинарного дерева в определенном порядке.
+
+* Обход PreOrder (от корня до листьев): root -> left -> right
+* Обход InOrder (по порядку): left -> root -> right
+* Обход PostOrder (от листьев до корня): left -> right -> root
+
+## Проблема
+Выполнить симметричный обход бинарного дерева.
+
+```
+Input: root = [1, null, 2, 3]
+
+Output: : [1, 3, 2]
+```
+
+## Объяснение
+
+1. Обход по порядку посещает узлы в следующем порядке: левый, корень, правый.
+2. Используем рекурсию или стек для обхода дерева в этом порядке.
+
+### Binary Tree Paths (PreOrder)
+[Пути бинарного дерева](https://leetcode.com/problems/binary-tree-paths/description/)
+
+![binary_tree_paths](project/paths-tree.jpg)
+
+```php
+/**
+ * TreeNode - Класс узла бинарного дерева
+ */
+class TreeNode
+{
+    public ?int $val = null;
+    public ?TreeNode $left = null;
+    public ?TreeNode $right = null;
+
+    public function __construct(int $val = 0, ?TreeNode $left = null, ?TreeNode $right = null)
+    {
+        $this->val = $val;
+        $this->left = $left;
+        $this->right = $right;
+    }
+}
+
+/**
+ * $root - Корень бинарного дерева.
+ * Задача состоит в том, чтобы сформировать все пути бинарного дерева $root от корня до листьев (PreOrder: root -> left -> right) в любом порядке.
+ * Массив строк путей бинарного дерева $root — это то, что нам нужно вернуть.
+ */
+class Solution
+{
+    public function binaryTreePaths(?TreeNode $root): array
+    {
+        if (!$root) {
+            return [];
+        }
+
+        if (!$root->left && !$root->right) {
+            // лист - узел, не имеющий дочерних узлов.
+            return [$root->val];
+        }
+
+        // делаем рекурсивный вызов для левого поддерева
+        $left = $this->binaryTreePaths($root->left);
+        // делаем рекурсивный вызов для правого поддерева
+        $right = $this->binaryTreePaths($root->right);
+
+        // объединяем корневое значение с каждым путем в левом поддереве.
+        $result = [];
+        foreach ($left as $path) {
+            $result[] = $root->val . '->' . $path;
+        }
+
+        // объединяем корневое значение с каждым путем в правом поддереве.
+        foreach ($right as $path) {
+            $result[] = $root->val . '->' . $path;
+        }
+
+        return $result;
+    }
+}
+
+$treeNode1 = new TreeNode(1);
+$treeNode2 = new TreeNode(2);
+$treeNode3 = new TreeNode(3);
+$treeNode5 = new TreeNode(5);
+$treeNode1->left = $treeNode2;
+$treeNode1->right = $treeNode3;
+$treeNode2->right = $treeNode5;
+
+var_dump(
+    (new Solution())->binaryTreePaths($treeNode1)
+);
+
+// output: array(2) {
+//   [0] => string(7) "1->2->5"
+//   [1] => string(4) "1->3"
+// }
+//
+// iteration1 = 2->5
+// iteration2 = 1-> . "2->5", 1->3
+```
+
 # Depth-First Search (DFS)
 # Breadth-First Search (BFS)
 # Matrix Traversal
