@@ -17,34 +17,43 @@ class TreeNode
 }
 
 /**
- *
+ * $root - Корень бинарного дерева поиска (BST). $k - целое число, наименьшее значение (индекс с 1) среди узлов дерева.
+ * Задача состоит в том, чтобы найти $k-е наименьшее значение среди узлов дерева. (используя обход InOrder: left -> root -> right)
+ * Значение узла дерева, являющееся $k-м наименьшим значением — это то, что нам нужно вернуть.
  */
 class Solution
 {
-    public function kthSmallest(TreeNode $root, int $k): int
+    public function kthSmallest(TreeNode $root, int $k): ?int
     {
-        $stack = [];
+        // используем стек для хранения узлов в дереве.
+        // решение основано на свойстве BST, где значение каждого узла больше всех значений в его левом поддереве и меньше всех значений в его правом поддереве.
+        $stack = new SplStack();
 
-        // Iterate until we find the kth smallest element
+        // проходим по дереву, пока не найдем $k-й элемент.
         while (true) {
-            // Traverse left subtree until there is no left child
+            // проходим левое поддерево до тех пор, пока не останется ни одного левого потомка.
             while ($root) {
                 $stack[] = $root;
                 $root = $root->left;
             }
 
-            // Get the node from the stack
-            $root = array_pop($stack);
+            // если $k больше размера дерева, то возвращаем NULL.
+            if ($stack->isEmpty()) {
+                return null;
+            }
 
-            // Decrease the count of elements to be found
+            // получаем узел из стека
+            $root = $stack->pop();
+
+            // уменьшаем количество элементов, которые необходимо найти
             $k--;
 
-            // If we have found the kth smallest element, return it
+            // если нашли k-й наименьший элемент, возвращаем его.
             if ($k === 0) {
                 return $root->val;
             }
 
-            // Traverse right subtree
+            // обходим правое поддерево
             $root = $root->right;
         }
     }
@@ -68,3 +77,5 @@ var_dump(
 );
 
 // output: int(3)
+// 1 <- 2 <- |3 | <- 4 <- 5 <- 6
+// k1   k2   |k3|   k4   k5   k6
