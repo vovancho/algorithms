@@ -8,7 +8,7 @@ class Node
     /** @var Node[]|null  */
     public ?array $neighbors = null;
 
-    public function __construct($val = 0)
+    public function __construct(int $val = 0)
     {
         $this->val = $val;
         $this->neighbors = [];
