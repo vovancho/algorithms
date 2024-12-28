@@ -1,5 +1,4 @@
 <?php
-
 /**
  * TreeNode - Класс узла бинарного дерева
  */
@@ -18,44 +17,40 @@ class TreeNode
 }
 
 /**
- *
+ * $root- Корень бинарного дерева.
+ * Задача состоит в том, чтобы вычислить максимальную сумму значений узлов пути бинарного дерева.
+ * Максимальная сумма значений узлов пути бинарного дерева $root — это то, что нам нужно вернуть.
  */
 class Solution
 {
     public function maxPathSum(TreeNode $root): int
     {
         $max = PHP_INT_MIN;
-        $this->DFS($root, $max);
+        // для вычисления используем поиск в глубину DFS (PostOrder: left -> right -> root)
+        $this->dfs($root, $max);
 
         return $max;
     }
 
-    private function DFS(?TreeNode $root, int &$max): int
+    private function dfs(?TreeNode $root, int &$max): int
     {
         if (!$root) {
             return 0;
         }
 
         // т.к. сумма отрицательных чисел только делает сумму меньше, то отрицательные суммы не рассматриваем.
-        $maxL = max($this->DFS($root->left, $max), 0);
-        $maxAfterMaxL = $max;
-        $maxR = max($this->DFS($root->right, $max), 0);
-        $maxAfterMaxR = $max;
+        // рекурсивно вычисляем максимальную сумму для левого пути узла
+        $maxL = max($this->dfs($root->left, $max), 0);
+        // рекурсивно вычисляем максимальную сумму для правого пути узла
+        $maxR = max($this->dfs($root->right, $max), 0);
 
+        // вычисляем максимальную сумму пути текущего узла
+        // (текущий узел + максимальная сумма для левого пути + максимальная сумма для правого пути)
         $maxBranch = $root->val + $maxL + $maxR;
+        // вычисляем максимальную сумму пути при прохождении узлов
         $max = max($max, $maxBranch);
 
-        var_dump(json_encode([
-            '$maxL' => $maxL,
-            '$maxR' => $maxR,
-            '$root->val' => $root->val,
-            '$maxBranch' => $maxBranch,
-            '$maxAfterMaxL' => $maxAfterMaxL,
-            '$maxAfterMaxR' => $maxAfterMaxR,
-            '$max' => $max,
-            'return' => $root->val + max($maxL, $maxR),
-        ]));
-
+        // возвращаем максимальную сумму пути одной из ветвей узла
         return $root->val + max($maxL, $maxR);
     }
 }
@@ -76,6 +71,7 @@ var_dump(
 );
 
 // output: int(42)
+//
 // (9) -- (15) -- (7) -- (20) --------------------- (-10)
 //                        |---(15) max                |---(9)
 //                        |---(7)                     |---(20) 20 + 15 = 35 max

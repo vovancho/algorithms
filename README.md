@@ -1,3 +1,77 @@
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
+
+- [Prefix Sum](#h-prefix-sum)
+   * [Проблема](#h-)
+   * [Объяснение](#h--1)
+      + [Range Sum Query - Immutable](#h-range-sum-query-immutable)
+      + [Contiguous Array](#h-contiguous-array)
+      + [Subarray Sum Equals K](#h-subarray-sum-equals-k)
+- [Two Pointers](#h-two-pointers)
+   * [Проблема](#h--2)
+   * [Объяснение](#h--3)
+      + [Two Sum II - Input Array is Sorted](#h-two-sum-ii-input-array-is-sorted)
+      + [3Sum](#h-3sum)
+      + [Container With Most Water](#h-container-with-most-water)
+- [Sliding Window](#h-sliding-window)
+   * [Проблема](#h--4)
+   * [Объяснение](#h--5)
+      + [Maximum Average Subarray I](#h-maximum-average-subarray-i)
+      + [Longest Substring Without Repeating Characters](#h-longest-substring-without-repeating-characters)
+      + [Minimum Window Substring](#h-minimum-window-substring)
+- [Fast & Slow Pointers](#h-fast-slow-pointers)
+   * [Проблема](#h--6)
+   * [Объяснение](#h--7)
+      + [Linked List Cycle](#h-linked-list-cycle)
+      + [Happy Number](#h-happy-number)
+      + [Find the Duplicate Number](#h-find-the-duplicate-number)
+- [LinkedList In-place Reversal](#h-linkedlist-in-place-reversal)
+   * [Проблема](#h--8)
+   * [Объяснение](#h--9)
+      + [Reverse Linked List (Целиком)](#h-reverse-linked-list-)
+      + [Reverse Linked List II (Частично)](#h-reverse-linked-list-ii-)
+      + [Swap Nodes in Pairs](#h-swap-nodes-in-pairs)
+- [Monotonic Stack](#h-monotonic-stack)
+   * [Проблема](#h--10)
+   * [Объяснение](#h--11)
+      + [Next Greater Element](#h-next-greater-element)
+      + [Daily Temperatures](#h-daily-temperatures)
+      + [Largest Rectangle in Histogram](#h-largest-rectangle-in-histogram)
+- [Top ‘K’ Elements](#h-top-k-elements)
+   * [Проблема](#h--12)
+   * [Объяснение](#h--13)
+      + [Kth Largest Element in an Array](#h-kth-largest-element-in-an-array)
+      + [Top K Frequent Elements](#h-top-k-frequent-elements)
+      + [Find K Pairs with Smallest Sums](#h-find-k-pairs-with-smallest-sums)
+- [Overlapping Intervals](#h-overlapping-intervals)
+   * [Проблема](#h--14)
+   * [Объяснение](#h--15)
+      + [Merge Intervals](#h-merge-intervals)
+      + [Insert Interval](#h-insert-interval)
+      + [Non-overlapping Intervals](#h-non-overlapping-intervals)
+- [Modified Binary Search](#h-modified-binary-search)
+   * [Проблема](#h--16)
+   * [Объяснение](#h--17)
+      + [Search in Rotated Sorted Array](#h-search-in-rotated-sorted-array)
+      + [Find Minimum in Rotated Sorted Array](#h-find-minimum-in-rotated-sorted-array)
+      + [Search a 2D Matrix](#h-search-a-2d-matrix)
+- [Binary Tree Traversal](#h-binary-tree-traversal)
+   * [Проблема](#h--18)
+   * [Объяснение](#h--19)
+      + [Binary Tree Paths (PreOrder)](#h-binary-tree-paths-preorder)
+      + [Kth Smallest Element in a BST (InOrder)](#h-kth-smallest-element-in-a-bst-inorder)
+      + [Binary Tree Maximum Path Sum (PostOrder)](#h-binary-tree-maximum-path-sum-postorder)
+- [Depth-First Search (DFS)](#h-depth-first-search-dfs)
+   * [Проблема](#h--20)
+   * [Объяснение](#h--21)
+      + [Clone Graph](#h-clone-graph)
+- [Breadth-First Search (BFS)](#h-breadth-first-search-bfs)
+- [Matrix Traversal](#h-matrix-traversal)
+- [Backtracking](#h-backtracking)
+- [Dynamic Programming Patterns](#h-dynamic-programming-patterns)
+
+<!-- TOC end -->
+
+<!-- TOC --><a name="h-prefix-sum"></a>
 # Prefix Sum
 _(Префиксные суммы)_
 
@@ -6,6 +80,7 @@ Prefix Sum включает предварительную обработку м
 
 Используйте этот шаблон, когда вам необходимо выполнить несколько запросов суммирования для подмассива или вычислить кумулятивные суммы.
 
+<!-- TOC --><a name="h-"></a>
 ## Проблема
 Для заданного массива nums определить сумму элементов в определенном диапазоне [i, j].
 
@@ -15,10 +90,12 @@ Input: nums = [1, 2, 3, 4, 5, 6], i = 1, j = 3
 Output: 9
 ```
 
+<!-- TOC --><a name="h--1"></a>
 ## Объяснение
 1. Предварительно обработайте массив A для создания массива префиксной суммы: `P = [1, 3, 6, 10, 15, 21]`.
 2. Чтобы найти сумму между индексами i и j, используйте формулу: `P[j] - P[i-1]`.
 
+<!-- TOC --><a name="h-range-sum-query-immutable"></a>
 ### Range Sum Query - Immutable
 [Интервальные суммы](https://leetcode.com/problems/range-sum-query-immutable/description/)
 
@@ -57,6 +134,7 @@ var_dump(
 // output: int(9)
 ```
 
+<!-- TOC --><a name="h-contiguous-array"></a>
 ### Contiguous Array
 [Непрерывный массив](https://leetcode.com/problems/contiguous-array/description/)
 
@@ -97,6 +175,7 @@ var_dump(
 // output: int(6)
 ```
 
+<!-- TOC --><a name="h-subarray-sum-equals-k"></a>
 ### Subarray Sum Equals K
 [Поиск всех подходящих под-сум](https://leetcode.com/problems/subarray-sum-equals-k/description/)
 
@@ -144,6 +223,7 @@ var_dump(
 // output: int(2)
 ```
 
+<!-- TOC --><a name="h-two-pointers"></a>
 # Two Pointers
 _(Метод двух указателей)_
 
@@ -151,6 +231,7 @@ _(Метод двух указателей)_
 
 Используйте этот шаблон при работе с отсортированными массивами или списками, где вам нужно найти пары, удовлетворяющие определенному условию.
 
+<!-- TOC --><a name="h--2"></a>
 ## Проблема
 Для заданного отсортированного массива nums найти два числа, которые в сумме дают целевое значение.
 
@@ -160,6 +241,7 @@ Input: nums = [1, 2, 3, 4, 6], target = 6
 Output: [1, 3] // 2 + 4 = 6
 ```
 
+<!-- TOC --><a name="h--3"></a>
 ## Объяснение
 1. Инициализируйте два указателя, один в начале (слева) и один в конце (справа) массива.
 2. Проверьте сумму элементов по двум указателям:
@@ -167,6 +249,7 @@ Output: [1, 3] // 2 + 4 = 6
    - Если сумма меньше цели, переместите левый указатель вправо.
    - Если сумма больше цели, переместите правый указатель влево.
 
+<!-- TOC --><a name="h-two-sum-ii-input-array-is-sorted"></a>
 ### Two Sum II - Input Array is Sorted
 [Метод двух указателей для отсортированного массива](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/)
 
@@ -212,6 +295,7 @@ var_dump(
 // }
 ```
 
+<!-- TOC --><a name="h-3sum"></a>
 ### 3Sum
 [Задача о трех суммах](https://leetcode.com/problems/3sum/description/)
 
@@ -289,6 +373,7 @@ var_dump(
 //  }
 ```
 
+<!-- TOC --><a name="h-container-with-most-water"></a>
 ### Container With Most Water
 [Контейнер с наибольшим количеством воды](https://leetcode.com/problems/container-with-most-water/description/)
 
@@ -340,6 +425,7 @@ var_dump(
 // output: int(49)
 ```
 
+<!-- TOC --><a name="h-sliding-window"></a>
 # Sliding Window
 _(Скользящее окно)_
 
@@ -347,6 +433,7 @@ _(Скользящее окно)_
 
 Используйте этот шаблон при решении задач, связанных с непрерывными подмассивами или подстроками.
 
+<!-- TOC --><a name="h--4"></a>
 ## Проблема
 Найти максимальную сумму подмассива размера k.
 
@@ -356,12 +443,14 @@ Input: nums = [2, 1, 5, 1, 3, 2], k = 3
 Output: 9 // [.., 5 + 1 + 3, ..]
 ```
 
+<!-- TOC --><a name="h--5"></a>
 ## Объяснение
 
 1. Начните с суммы первых k элементов.
 2. Сдвиньте окно на один элемент за раз, вычитая элемент, который выходит за пределы окна, и добавляя новый элемент.
 3. Отслеживайте максимальную полученную сумму.
 
+<!-- TOC --><a name="h-maximum-average-subarray-i"></a>
 ### Maximum Average Subarray I
 [Максимальное среднее значение подмассива](https://leetcode.com/problems/maximum-average-subarray-i/description/)
 
@@ -411,6 +500,7 @@ var_dump(
 // (12 - 5 - 6 + 50) / 4 = 12.75
 ```
 
+<!-- TOC --><a name="h-longest-substring-without-repeating-characters"></a>
 ### Longest Substring Without Repeating Characters
 [Длина самой длинной подстроки без повторяющихся символов](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
 
@@ -466,6 +556,7 @@ var_dump(
 // output: int(3)
 ```
 
+<!-- TOC --><a name="h-minimum-window-substring"></a>
 ### Minimum Window Substring
 [Минимальная подстрока окна](https://leetcode.com/problems/minimum-window-substring/description/)
 
@@ -540,21 +631,25 @@ var_dump(
 //           BA C => (ABC)
 ```
 
+<!-- TOC --><a name="h-fast-slow-pointers"></a>
 # Fast & Slow Pointers
 _(Быстрые и медленные указатели)_
 
 Шаблон «Быстрые и медленные указатели (Черепаха и Заяц, Обнаружение цикла Флойда)» используется для обнаружения циклов в связанных списках и других подобных структурах.
 
+<!-- TOC --><a name="h--6"></a>
 ## Проблема
 
 Определить, есть ли цикл в связанном списке.
 
+<!-- TOC --><a name="h--7"></a>
 ## Объяснение
 
 1. Инициализируйте два указателя, один из которых перемещается на один шаг за раз (медленно), а другой перемещается на два шага за раз (быстро).
 2. Если есть цикл, быстрый указатель в конечном итоге встретится с медленным указателем.
 3. Если быстрый указатель достигает конца списка, цикла нет.
 
+<!-- TOC --><a name="h-linked-list-cycle"></a>
 ### Linked List Cycle
 [Цикл связанного списка](https://leetcode.com/problems/linked-list-cycle/description/)
 
@@ -616,6 +711,7 @@ var_dump(
 // output: bool(true)
 ```
 
+<!-- TOC --><a name="h-happy-number"></a>
 ### Happy Number
 [Счастливое число](https://leetcode.com/problems/happy-number/description/)
 
@@ -669,6 +765,7 @@ var_dump(
 // ^        ^                 --                ^        ^                  ---    ^        ^        ^                    -
 ```
 
+<!-- TOC --><a name="h-find-the-duplicate-number"></a>
 ### Find the Duplicate Number
 [Поиск повторяющегося числа](https://leetcode.com/problems/find-the-duplicate-number/description/)
 
@@ -711,6 +808,7 @@ var_dump(
 // output: int(2)
 ```
 
+<!-- TOC --><a name="h-linkedlist-in-place-reversal"></a>
 # LinkedList In-place Reversal
 _(Перестановка связанного списка на месте)_
 
@@ -718,6 +816,7 @@ _(Перестановка связанного списка на месте)_
 
 Используйте этот шаблон, когда вам нужно перевернуть секции связанного списка.
 
+<!-- TOC --><a name="h--8"></a>
 ## Проблема
 Перевернуть подсписок связанного списка из позиции m в позицию n.
 
@@ -727,11 +826,13 @@ Input: head = [1, 2, 3, 4, 5], m = 2, n = 4
 Output: [1, 4, 3, 2, 5] // 2, 3, 4 => 4, 3, 2
 ```
 
+<!-- TOC --><a name="h--9"></a>
 ## Объяснение
 
 1. Определите начало и конец подсписка.
 2. Измените местами узлы, отрегулировав указатели.
 
+<!-- TOC --><a name="h-reverse-linked-list-"></a>
 ### Reverse Linked List (Целиком)
 [Переворачивание связанного списка целиком](https://leetcode.com/problems/reverse-linked-list/description/)
 
@@ -814,6 +915,7 @@ var_dump(
 ```
 
 
+<!-- TOC --><a name="h-reverse-linked-list-ii-"></a>
 ### Reverse Linked List II (Частично)
 [Переворачивание части связанного списка](https://leetcode.com/problems/reverse-linked-list-ii/description/)
 
@@ -906,6 +1008,7 @@ var_dump(
 // }
 ```
 
+<!-- TOC --><a name="h-swap-nodes-in-pairs"></a>
 ### Swap Nodes in Pairs
 [Меняем местами узлы связанного списка попарно](https://leetcode.com/problems/swap-nodes-in-pairs/description/)
 
@@ -992,6 +1095,7 @@ var_dump(
 // }
 ```
 
+<!-- TOC --><a name="h-monotonic-stack"></a>
 # Monotonic Stack
 _(Монотонный стек)_
 
@@ -999,6 +1103,7 @@ _(Монотонный стек)_
 
 Используйте этот шаблон для задач, требующих нахождения следующего большего или меньшего элемента.
 
+<!-- TOC --><a name="h--10"></a>
 ## Проблема
 Найти следующий больший элемент для каждого элемента в массиве. Вывести -1, если больший элемент не существует.
 
@@ -1008,6 +1113,7 @@ Input: nums = [2, 1, 2, 4, 3]
 Output: [4, 2, 4, -1, -1]
 ```
 
+<!-- TOC --><a name="h--11"></a>
 ## Объяснение
 
 1. Используйте стек, чтобы отслеживать элементы, для которых мы еще не нашли следующий больший элемент.
@@ -1015,6 +1121,7 @@ Output: [4, 2, 4, -1, -1]
 3. Если стек не пуст, установите результат для индекса наверху стека на текущий элемент.
 4. Поместите текущий элемент в стек
 
+<!-- TOC --><a name="h-next-greater-element"></a>
 ###  Next Greater Element
 [Следующий больший элемент](https://leetcode.com/problems/next-greater-element-i/description/)
 
@@ -1066,6 +1173,7 @@ var_dump(
 // }
 ```
 
+<!-- TOC --><a name="h-daily-temperatures"></a>
 ### Daily Temperatures
 [Дневные температуры](https://leetcode.com/problems/daily-temperatures/description/)
 
@@ -1123,6 +1231,7 @@ var_dump(
 // }
 ```
 
+<!-- TOC --><a name="h-largest-rectangle-in-histogram"></a>
 ### Largest Rectangle in Histogram
 [Самый большой прямоугольник в гистограмме](https://leetcode.com/problems/largest-rectangle-in-histogram/description/)
 
@@ -1175,11 +1284,13 @@ var_dump(
 // output: int(10) площадь прямоугольника столбцов со значениями 5 и 6
 ```
 
+<!-- TOC --><a name="h-top-k-elements"></a>
 # Top ‘K’ Elements
 _(Топ 'K' Элементов)_
 
 Шаблон «Топ 'K' Элементов» находит первые k наибольших или наименьших элементов в массиве или потоке данных с помощью куч или сортировки.
 
+<!-- TOC --><a name="h--12"></a>
 ## Проблема
 Найти k-й по величине элемент в несортированном массиве.
 
@@ -1189,6 +1300,7 @@ Input: nums = [3, 2, 1, 5, 6, 4], k = 2
 Output: 5
 ```
 
+<!-- TOC --><a name="h--13"></a>
 ## Объяснение
 
 1. Используйте min-heap (SplMinHeap) размером k, чтобы отслеживать k наибольших элементов.
@@ -1196,6 +1308,7 @@ Output: 5
 3. Если размер heap превышает k, удалите наименьший элемент из heap.
 4. Корнем heap будет k-й наибольший элемент.
 
+<!-- TOC --><a name="h-kth-largest-element-in-an-array"></a>
 ### Kth Largest Element in an Array
 [K-й наибольший элемент в массиве](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
 
@@ -1253,6 +1366,7 @@ var_dump(
 // k: 9 => 1
 ```
 
+<!-- TOC --><a name="h-top-k-frequent-elements"></a>
 ### Top K Frequent Elements
 [Топ K частых элементов](https://leetcode.com/problems/top-k-frequent-elements/description/)
 
@@ -1309,6 +1423,7 @@ var_dump(
 // k: 3 => 1 раз
 ```
 
+<!-- TOC --><a name="h-find-k-pairs-with-smallest-sums"></a>
 ### Find K Pairs with Smallest Sums
 [Поиск K пар с наименьшими суммами](https://leetcode.com/problems/find-k-pairs-with-smallest-sums/description/)
 
@@ -1376,6 +1491,7 @@ var_dump(
 // }
 ```
 
+<!-- TOC --><a name="h-overlapping-intervals"></a>
 # Overlapping Intervals
 _(Перекрывающиеся интервалы)_
 
@@ -1383,6 +1499,7 @@ _(Перекрывающиеся интервалы)_
 
 В массиве интервалов, отсортированном по времени начала, два интервала `[a, b]` и `[c, d]` перекрываются, если `b >= c` (т. е. время окончания первого интервала больше или равно времени начала второго интервала).
 
+<!-- TOC --><a name="h--14"></a>
 ## Проблема
 Объединить все перекрывающиеся интервалы.
 
@@ -1392,6 +1509,7 @@ Input: intervals = [[1, 3], [2, 6], [8, 10], [15, 18]]
 Output: [[1, 6], [8, 10], [15, 18]]
 ```
 
+<!-- TOC --><a name="h--15"></a>
 ## Объяснение
 
 1. Отсортируйте интервалы по времени начала.
@@ -1400,6 +1518,7 @@ Output: [[1, 6], [8, 10], [15, 18]]
 4. Если перекрывается, объедините интервалы, обновив время окончания последнего интервала в merged.
 5. Если не перекрывается, просто добавьте текущий интервал в объединенный список.
 
+<!-- TOC --><a name="h-merge-intervals"></a>
 ### Merge Intervals
 [Объединение интервалов](https://leetcode.com/problems/merge-intervals/description/)
 
@@ -1458,6 +1577,7 @@ var_dump(
 // }
 ```
 
+<!-- TOC --><a name="h-insert-interval"></a>
 ### Insert Interval
 [Вставка интервала](https://leetcode.com/problems/insert-interval/description/)
 
@@ -1523,6 +1643,7 @@ var_dump(
 // }
 ```
 
+<!-- TOC --><a name="h-non-overlapping-intervals"></a>
 ### Non-overlapping Intervals
 [Не перекрывающиеся интервалы](https://leetcode.com/problems/non-overlapping-intervals/description/)
 
@@ -1565,6 +1686,7 @@ var_dump(
 // [1, 3] - перекрывается с интервалом [1, 2] и [2, 3]
 ```
 
+<!-- TOC --><a name="h-modified-binary-search"></a>
 # Modified Binary Search
 _(Модифицированный бинарный поиск)_
 
@@ -1572,6 +1694,7 @@ _(Модифицированный бинарный поиск)_
 
 Используйте этот шаблон для задач, связанных с отсортированными или повернутыми массивами, где вам нужно найти определенный элемент.
 
+<!-- TOC --><a name="h--16"></a>
 ## Проблема
 Найти элемент в повернутом отсортированном массиве.
 
@@ -1581,12 +1704,14 @@ Input: nums = [4, 5, 6, 7, 0, 1, 2], target = 0
 Output: 4 // [4 => 0]
 ```
 
+<!-- TOC --><a name="h--17"></a>
 ## Объяснение
 
 1. Выполняем бинарный поиск с дополнительной проверкой, чтобы определить, какая половина массива отсортирована.
 2. Затем проверяем, находится ли цель в диапазоне отсортированной половины.
 3. Если это так, то ищем в этой половине, в противном случае ищем в другой половине.
 
+<!-- TOC --><a name="h-search-in-rotated-sorted-array"></a>
 ### Search in Rotated Sorted Array
 [Поиск в отсортированном повернутом массиве](https://leetcode.com/problems/search-in-rotated-sorted-array/description/)
 
@@ -1650,6 +1775,7 @@ var_dump(
 //          target pos
 ```
 
+<!-- TOC --><a name="h-find-minimum-in-rotated-sorted-array"></a>
 ### Find Minimum in Rotated Sorted Array
 [Найти минимум в повернутом отсортированном массиве](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)
 
@@ -1698,6 +1824,7 @@ var_dump(
 //              ^
 ```
 
+<!-- TOC --><a name="h-search-a-2d-matrix"></a>
 ### Search a 2D Matrix
 [Поиск в 2D-матрице](https://leetcode.com/problems/search-a-2d-matrix-ii/description/)
 
@@ -1769,6 +1896,7 @@ var_dump(
 //       ^
 ```
 
+<!-- TOC --><a name="h-binary-tree-traversal"></a>
 # Binary Tree Traversal
 _(Обход бинарного дерева)_
 
@@ -1778,6 +1906,7 @@ _(Обход бинарного дерева)_
 * Обход InOrder (по порядку): left -> root -> right
 * Обход PostOrder (от листьев до корня): left -> right -> root
 
+<!-- TOC --><a name="h--18"></a>
 ## Проблема
 Выполнить симметричный обход бинарного дерева.
 
@@ -1787,11 +1916,13 @@ Input: root = [1, null, 2, 3]
 Output: : [1, 3, 2]
 ```
 
+<!-- TOC --><a name="h--19"></a>
 ## Объяснение
 
 1. Обход по порядку посещает узлы в следующем порядке: левый, корень, правый.
 2. Используем рекурсию или стек для обхода дерева в этом порядке.
 
+<!-- TOC --><a name="h-binary-tree-paths-preorder"></a>
 ### Binary Tree Paths (PreOrder)
 [Пути бинарного дерева](https://leetcode.com/problems/binary-tree-paths/description/)
 
@@ -1874,6 +2005,7 @@ var_dump(
 // iteration2 = 1-> . "2->5", 1->3
 ```
 
+<!-- TOC --><a name="h-kth-smallest-element-in-a-bst-inorder"></a>
 ### Kth Smallest Element in a BST (InOrder)
 [K-й наименьший элемент в BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)
 
@@ -1962,6 +2094,98 @@ var_dump(
 // k1   k2   |k3|   k4   k5   k6
 ```
 
+<!-- TOC --><a name="h-binary-tree-maximum-path-sum-postorder"></a>
+### Binary Tree Maximum Path Sum (PostOrder)
+[Максимальная сумма пути бинарного дерева](https://leetcode.com/problems/binary-tree-maximum-path-sum/description/)
+
+![binary_tree_maximum_path_sum](project/exx2.jpg)
+
+```php
+/**
+ * TreeNode - Класс узла бинарного дерева
+ */
+class TreeNode
+{
+    public ?int $val = null;
+    public ?TreeNode $left = null;
+    public ?TreeNode $right = null;
+
+    public function __construct(int $val = 0, ?TreeNode $left = null, ?TreeNode $right = null)
+    {
+        $this->val = $val;
+        $this->left = $left;
+        $this->right = $right;
+    }
+}
+
+/**
+ * $root- Корень бинарного дерева.
+ * Задача состоит в том, чтобы вычислить максимальную сумму значений узлов пути бинарного дерева.
+ * Максимальная сумма значений узлов пути бинарного дерева $root — это то, что нам нужно вернуть.
+ */
+class Solution
+{
+    public function maxPathSum(TreeNode $root): int
+    {
+        $max = PHP_INT_MIN;
+        // для вычисления используем поиск в глубину DFS (PostOrder: left -> right -> root)
+        $this->dfs($root, $max);
+
+        return $max;
+    }
+
+    private function dfs(?TreeNode $root, int &$max): int
+    {
+        if (!$root) {
+            return 0;
+        }
+
+        // т.к. сумма отрицательных чисел только делает сумму меньше, то отрицательные суммы не рассматриваем.
+        // рекурсивно вычисляем максимальную сумму для левого пути узла
+        $maxL = max($this->dfs($root->left, $max), 0);
+        // рекурсивно вычисляем максимальную сумму для правого пути узла
+        $maxR = max($this->dfs($root->right, $max), 0);
+
+        // вычисляем максимальную сумму пути текущего узла
+        // (текущий узел + максимальная сумма для левого пути + максимальная сумма для правого пути)
+        $maxBranch = $root->val + $maxL + $maxR;
+        // вычисляем максимальную сумму пути при прохождении узлов
+        $max = max($max, $maxBranch);
+
+        // возвращаем максимальную сумму пути одной из ветвей узла
+        return $root->val + max($maxL, $maxR);
+    }
+}
+
+$treeNode1 = new TreeNode(-10);
+$treeNode2 = new TreeNode(9);
+$treeNode3 = new TreeNode(20);
+$treeNode4 = new TreeNode(15);
+$treeNode5 = new TreeNode(7);
+
+$treeNode1->left = $treeNode2;
+$treeNode1->right = $treeNode3;
+$treeNode3->left = $treeNode4;
+$treeNode3->right = $treeNode5;
+
+var_dump(
+    (new Solution())->maxPathSum($treeNode1)
+);
+
+// output: int(42)
+//
+// (9) -- (15) -- (7) -- (20) --------------------- (-10)
+//                        |---(15) max                |---(9)
+//                        |---(7)                     |---(20) 20 + 15 = 35 max
+//                        = 20 + 15 + 7 = 42 [max]         |---(15) max
+//                                                         |---(7)
+//                                                         = 9 + -10 + 20 + 15 = 34 [max]
+//
+// max(9,  15,     7,     42,                         34) = 42
+// -----------------------------------------------------------
+```
+
+<!-- TOC --><a name="h-depth-first-search-dfs"></a>
 # Depth-First Search (DFS)
 _(Поиск в глубину)_
 
@@ -1969,6 +2193,7 @@ _(Поиск в глубину)_
 
 Используйте этот шаблон для исследования всех путей или ветвей в графах или деревьях.
 
+<!-- TOC --><a name="h--20"></a>
 ## Проблема
 Найдите все пути от корня до листьев в бинарном дереве.
 
@@ -1984,11 +2209,13 @@ Input: root = [1, 2, 3, null, 5]
 Output: : ["1->2->5", "1->3"]
 ```
 
+<!-- TOC --><a name="h--21"></a>
 ## Объяснение
 
 1. Используйте рекурсию или стек для обхода каждого пути от корня до листьев.
 2. Записывайте каждый путь по мере обхода.
 
+<!-- TOC --><a name="h-clone-graph"></a>
 ### Clone Graph
 [Клонировать граф](https://leetcode.com/problems/clone-graph/description/)
 
@@ -2102,7 +2329,11 @@ var_dump($solution->printBuf());
 //                    <-(1)--(2)--(3)--(4) <-|
 ```
 
+<!-- TOC --><a name="h-breadth-first-search-bfs"></a>
 # Breadth-First Search (BFS)
+<!-- TOC --><a name="h-matrix-traversal"></a>
 # Matrix Traversal
+<!-- TOC --><a name="h-backtracking"></a>
 # Backtracking
+<!-- TOC --><a name="h-dynamic-programming-patterns"></a>
 # Dynamic Programming Patterns
