@@ -1,73 +1,76 @@
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
 - [Prefix Sum](#h-prefix-sum)
-   * [Проблема](#h-)
-   * [Объяснение](#h--1)
-      + [Range Sum Query - Immutable](#h-range-sum-query-immutable)
-      + [Contiguous Array](#h-contiguous-array)
-      + [Subarray Sum Equals K](#h-subarray-sum-equals-k)
+    * [Проблема](#h-)
+    * [Объяснение](#h--1)
+        + [Range Sum Query - Immutable](#h-range-sum-query-immutable)
+        + [Contiguous Array](#h-contiguous-array)
+        + [Subarray Sum Equals K](#h-subarray-sum-equals-k)
 - [Two Pointers](#h-two-pointers)
-   * [Проблема](#h--2)
-   * [Объяснение](#h--3)
-      + [Two Sum II - Input Array is Sorted](#h-two-sum-ii-input-array-is-sorted)
-      + [3Sum](#h-3sum)
-      + [Container With Most Water](#h-container-with-most-water)
+    * [Проблема](#h--2)
+    * [Объяснение](#h--3)
+        + [Two Sum II - Input Array is Sorted](#h-two-sum-ii-input-array-is-sorted)
+        + [3Sum](#h-3sum)
+        + [Container With Most Water](#h-container-with-most-water)
 - [Sliding Window](#h-sliding-window)
-   * [Проблема](#h--4)
-   * [Объяснение](#h--5)
-      + [Maximum Average Subarray I](#h-maximum-average-subarray-i)
-      + [Longest Substring Without Repeating Characters](#h-longest-substring-without-repeating-characters)
-      + [Minimum Window Substring](#h-minimum-window-substring)
+    * [Проблема](#h--4)
+    * [Объяснение](#h--5)
+        + [Maximum Average Subarray I](#h-maximum-average-subarray-i)
+        + [Longest Substring Without Repeating Characters](#h-longest-substring-without-repeating-characters)
+        + [Minimum Window Substring](#h-minimum-window-substring)
 - [Fast & Slow Pointers](#h-fast-slow-pointers)
-   * [Проблема](#h--6)
-   * [Объяснение](#h--7)
-      + [Linked List Cycle](#h-linked-list-cycle)
-      + [Happy Number](#h-happy-number)
-      + [Find the Duplicate Number](#h-find-the-duplicate-number)
+    * [Проблема](#h--6)
+    * [Объяснение](#h--7)
+        + [Linked List Cycle](#h-linked-list-cycle)
+        + [Happy Number](#h-happy-number)
+        + [Find the Duplicate Number](#h-find-the-duplicate-number)
 - [LinkedList In-place Reversal](#h-linkedlist-in-place-reversal)
-   * [Проблема](#h--8)
-   * [Объяснение](#h--9)
-      + [Reverse Linked List (Целиком)](#h-reverse-linked-list-)
-      + [Reverse Linked List II (Частично)](#h-reverse-linked-list-ii-)
-      + [Swap Nodes in Pairs](#h-swap-nodes-in-pairs)
+    * [Проблема](#h--8)
+    * [Объяснение](#h--9)
+        + [Reverse Linked List (Целиком)](#h-reverse-linked-list-)
+        + [Reverse Linked List II (Частично)](#h-reverse-linked-list-ii-)
+        + [Swap Nodes in Pairs](#h-swap-nodes-in-pairs)
 - [Monotonic Stack](#h-monotonic-stack)
-   * [Проблема](#h--10)
-   * [Объяснение](#h--11)
-      + [Next Greater Element](#h-next-greater-element)
-      + [Daily Temperatures](#h-daily-temperatures)
-      + [Largest Rectangle in Histogram](#h-largest-rectangle-in-histogram)
+    * [Проблема](#h--10)
+    * [Объяснение](#h--11)
+        + [Next Greater Element](#h-next-greater-element)
+        + [Daily Temperatures](#h-daily-temperatures)
+        + [Largest Rectangle in Histogram](#h-largest-rectangle-in-histogram)
 - [Top ‘K’ Elements](#h-top-k-elements)
-   * [Проблема](#h--12)
-   * [Объяснение](#h--13)
-      + [Kth Largest Element in an Array](#h-kth-largest-element-in-an-array)
-      + [Top K Frequent Elements](#h-top-k-frequent-elements)
-      + [Find K Pairs with Smallest Sums](#h-find-k-pairs-with-smallest-sums)
+    * [Проблема](#h--12)
+    * [Объяснение](#h--13)
+        + [Kth Largest Element in an Array](#h-kth-largest-element-in-an-array)
+        + [Top K Frequent Elements](#h-top-k-frequent-elements)
+        + [Find K Pairs with Smallest Sums](#h-find-k-pairs-with-smallest-sums)
 - [Overlapping Intervals](#h-overlapping-intervals)
-   * [Проблема](#h--14)
-   * [Объяснение](#h--15)
-      + [Merge Intervals](#h-merge-intervals)
-      + [Insert Interval](#h-insert-interval)
-      + [Non-overlapping Intervals](#h-non-overlapping-intervals)
+    * [Проблема](#h--14)
+    * [Объяснение](#h--15)
+        + [Merge Intervals](#h-merge-intervals)
+        + [Insert Interval](#h-insert-interval)
+        + [Non-overlapping Intervals](#h-non-overlapping-intervals)
 - [Modified Binary Search](#h-modified-binary-search)
-   * [Проблема](#h--16)
-   * [Объяснение](#h--17)
-      + [Search in Rotated Sorted Array](#h-search-in-rotated-sorted-array)
-      + [Find Minimum in Rotated Sorted Array](#h-find-minimum-in-rotated-sorted-array)
-      + [Search a 2D Matrix](#h-search-a-2d-matrix)
+    * [Проблема](#h--16)
+    * [Объяснение](#h--17)
+        + [Search in Rotated Sorted Array](#h-search-in-rotated-sorted-array)
+        + [Find Minimum in Rotated Sorted Array](#h-find-minimum-in-rotated-sorted-array)
+        + [Search a 2D Matrix](#h-search-a-2d-matrix)
 - [Binary Tree Traversal](#h-binary-tree-traversal)
-   * [Проблема](#h--18)
-   * [Объяснение](#h--19)
-      + [Binary Tree Paths (PreOrder)](#h-binary-tree-paths-preorder)
-      + [Kth Smallest Element in a BST (InOrder)](#h-kth-smallest-element-in-a-bst-inorder)
-      + [Binary Tree Maximum Path Sum (PostOrder)](#h-binary-tree-maximum-path-sum-postorder)
+    * [Проблема](#h--18)
+    * [Объяснение](#h--19)
+        + [Binary Tree Paths (PreOrder)](#h-binary-tree-paths-preorder)
+        + [Kth Smallest Element in a BST (InOrder)](#h-kth-smallest-element-in-a-bst-inorder)
+        + [Binary Tree Maximum Path Sum (PostOrder)](#h-binary-tree-maximum-path-sum-postorder)
 - [Depth-First Search (DFS)](#h-depth-first-search-dfs)
-   * [Проблема](#h--20)
-   * [Объяснение](#h--21)
-      + [Clone Graph](#h-clone-graph)
+    * [Проблема](#h--20)
+    * [Объяснение](#h--21)
+        + [Clone Graph](#h-clone-graph)
 - [Breadth-First Search (BFS)](#h-breadth-first-search-bfs)
 - [Matrix Traversal](#h-matrix-traversal)
 - [Backtracking](#h-backtracking)
 - [Dynamic Programming Patterns](#h-dynamic-programming-patterns)
+- [Методы разрешения коллизий](#h--)
+    * [Разрешение коллизий с помощью цепочек](#h---1)
+    * [Двойное хеширование](#h---2)
 
 <!-- TOC end -->
 
@@ -245,9 +248,9 @@ Output: [1, 3] // 2 + 4 = 6
 ## Объяснение
 1. Инициализируйте два указателя, один в начале (слева) и один в конце (справа) массива.
 2. Проверьте сумму элементов по двум указателям:
-   - Если сумма равна цели, верните индексы.
-   - Если сумма меньше цели, переместите левый указатель вправо.
-   - Если сумма больше цели, переместите правый указатель влево.
+    - Если сумма равна цели, верните индексы.
+    - Если сумма меньше цели, переместите левый указатель вправо.
+    - Если сумма больше цели, переместите правый указатель влево.
 
 <!-- TOC --><a name="h-two-sum-ii-input-array-is-sorted"></a>
 ### Two Sum II - Input Array is Sorted
@@ -2337,3 +2340,176 @@ var_dump($solution->printBuf());
 # Backtracking
 <!-- TOC --><a name="h-dynamic-programming-patterns"></a>
 # Dynamic Programming Patterns
+<!-- TOC --><a name="h--"></a>
+# Методы разрешения коллизий
+<!-- TOC --><a name="h---1"></a>
+## Разрешение коллизий с помощью цепочек
+
+Каждая ячейка хеш-таблицы содержит указатель на список (или другую динамическую структуру данных), в котором хранятся все элементы с одинаковым хешем.
+
+![collision_resolution_chaining](project/collision_resolution_chaining.png)
+
+```php
+class HashTable
+{
+    private array $buckets;
+    private int $size;
+
+    public function __construct(int $size)
+    {
+        $this->size = $size;
+        $this->buckets = array_fill(0, $size, null);
+    }
+
+    public function insert(int $key, string $value): void
+    {
+        $index = $this->hash($key);
+        $this->buckets[$index] = $this->buckets[$index] ?? [];
+
+        foreach ($this->buckets[$index] as [$kvPairKey, &$vPairValue]) {
+            if ($kvPairKey === $key) {
+                $vPairValue = $value;
+                return;
+            }
+        }
+
+        $this->buckets[$index][] = [$key, $value];
+    }
+
+    public function find(int $key): ?string
+    {
+        $index = $this->hash($key);
+
+        if (!isset($this->buckets[$index])) {
+            return null;
+        }
+
+        foreach ($this->buckets[$index] as [$kvPairKey, $vPairValue]) {
+            if ($kvPairKey === $key) {
+                return $vPairValue;
+            }
+        }
+
+        return null;
+    }
+
+    private function hash(int $key): int
+    {
+        return $key % $this->size;
+    }
+}
+
+$hashTable = new HashTable(3); // уменьшаем размер таблицы для увеличения вероятности коллизий
+
+// вставляем ключи, которые вызывают коллизии: 3 % 3 = 0, 6 % 3 = 0
+$hashTable->insert(3, 'val3');
+$hashTable->insert(6, 'val6'); // эти ключи имеют одинаковый остаток от деления на 3
+
+echo 'Значение для 3: ' . $hashTable->find(3) . PHP_EOL; // выводит: val3
+echo 'Значение для 6: ' . $hashTable->find(6) . PHP_EOL; // выводит: val6
+
+// [
+// # hash func: 3 % 3 === 0, 6 % 3 === 0
+//     0 => [[3, 'val3'], [6, 'val6']], // идем по цепочке и сравниваем переданный ключ с первым элементом в значении списка
+//     1 => null,
+//     2 => null,
+// ]
+```
+
+**Преимущества:**
+* Простота реализации.
+* Эффективность при небольшом количестве коллизий.
+* Меньшая зависимость от плотности заполнения хеш-таблицы.
+
+**Недостатки:**
+* Требует дополнительной памяти для указателей в связном списке.
+* Производительность может падать при большом количестве коллизий из-за длинных цепочек.
+
+<!-- TOC --><a name="h---2"></a>
+## Двойное хеширование
+
+Метод борьбы с коллизиями, возникающими при открытой адресации, основанный на использовании двух хеш-функций для построения различных последовательностей исследования хеш-таблицы.
+
+![collision_resolution_chaining](project/collision_resolution_double_hashing.png)
+
+```php
+class HashTable
+{
+    public array $table;
+    private int $size;
+
+    public function __construct(int $size)
+    {
+        $this->size = $size;
+        $this->table = array_fill(0, $size, null);
+    }
+
+    private function primaryHash(int $key): int
+    {
+        // Простая хеш-функция для создания коллизий
+        return $key % $this->size;
+    }
+
+    private function secondaryHash(int $key): int
+    {
+        // Вторичная хеш-функция
+        return 1 + $key % $this->size;
+    }
+
+    public function insert(int $key, string $value): void
+    {
+        $index = $this->primaryHash($key);
+        $stepSize = $this->secondaryHash($key);
+
+        while ($this->table[$index] !== null && $this->table[$index][0] !== $key) {
+            $index = ($index + $stepSize);
+            var_dump($key . ' ind ' . $index);
+        }
+
+
+        $this->table[$index] = [$key, $value];
+    }
+
+    public function find(int $key): ?string
+    {
+        $index = $this->primaryHash($key);
+        $stepSize = $this->secondaryHash($key);
+
+        while ($this->table[$index] !== null) {
+            if ($this->table[$index][0] === $key) {
+                return $this->table[$index][1];
+            }
+
+            $index = ($index + $stepSize);
+        }
+
+        return null;
+    }
+}
+
+// Пример использования
+$hashTable = new HashTable(3); // уменьшаем размер таблицы для увеличения вероятности коллизий
+
+// Эти ключи должны вызвать коллизию
+$hashTable->insert(3, 'val3');
+$hashTable->insert(6, 'val6'); // эти ключи имеют одинаковый остаток от деления на 3
+$hashTable->insert(9, 'val9'); // эти ключи имеют одинаковый остаток от деления на 3
+
+echo "Значение для 3: " . $hashTable->find(3) . PHP_EOL; // выводит: val3
+echo "Значение для 6: " . $hashTable->find(6) . PHP_EOL; // выводит: val6
+echo "Значение для 9: " . $hashTable->find(9) . PHP_EOL; // выводит: val9
+
+// [
+//     0 => [3, 'val3'], # hash func: 3 % 3 === 0 (primary)                                          |(0)
+//     1 => [6, 'val6'], # hash func: 6 % 3 === 0 (primary), 1 + 6 % 3 === 1 (secondary)             | 0 + 1 = (1)
+//     2 => [9, 'val9'], # hash func: 9 % 3 === 0 (primary), 1 + 9 % 3 === 1 (secondary) | 0 + 1 = 1 | 1 + 1 = (2)
+// ]
+```
+
+**Преимущества:**
+* Не требует дополнительной памяти для хранения указателей.
+* Более компактное представление данных.
+
+**Недостатки:**
+* Производительность может значительно падать при высокой плотности заполнения таблицы.
+* Требует больше вычислительных ресурсов для разрешения коллизий.
